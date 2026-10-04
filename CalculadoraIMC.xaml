@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticaUI.CalculadoraIMC"
+             Title="CalculadoraIMC">
+    <!-- ScrollView esto nos permite deslizar si el teclado tapa parte de la pantalla por ejemplo.-->
+    <ScrollView>
+        <!-- VerticalStackLayout Apila los controles uno debajo del otro-->
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+
+            <Label Text=" CALCULADORA IMC " FontSize="24" FontAttributes="Bold" 
+                   TextColor="#0ED9F0" HorizontalOptions="Center"/>
+
+            <!-- Campo para agregar el peso -->
+            <Label Text="Peso (Kg)" TextColor="BlueViolet" FontAttributes="Bold"/>
+
+            <!--Es como un div osea un container, dibuja un marco con esquinas redondeandas al rededor del entry -->
+            <Border Stroke="Black" StrokeShape="RoundRectangle 8" Padding="5,0">
+                <!--Texto para recibir la entrada numerica Elemento de entrada de datos pues.-->
+                <!--x: Name es el nombre con que el lenguaje C#  identifica el elemento en la vista
+                La propiedad KeyBoard = Numeric, muestra en pantalla un valor de numero.-->
+                <Entry x:Name="txtPeso" Placeholder="Ejemplo: 70.5" Keyboard="Numeric"/>
+
+            </Border>
+
+            <!--Campo ALtura-->
+            <Label Text="Altura (metros)" TextColor="BlueViolet" FontAttributes="Bold"/>
+
+            <Border Stroke="Black" StrokeShape="RoundRectangle 8" Padding="5,0">
+
+                <Entry x:Name="txtAltura" Placeholder="Ejemplo: 1.74" Keyboard="Numeric"/>
+
+            </Border>
+
+            <!--Boton para calcular -->
+            <!--evento Clicked indicsa que metodo de C# se ejecuta al tocarlo -->
+            <Button Text="Calcular"  Background="#0ED9F0" TextColor="Black"
+                    FontAttributes="Bold" CornerRadius="48" Clicked="Button_Clicked"/>
+
+
+            <!--Tarjeta de resultados funcion IsVisible = False, mantiene oculto la etiqueta
+            hasta  que realizamos el calculo-->
+            <Border x:Name="brResultado" StrokeShape="RoundRectangle 12" Padding="20" IsVisible="False" Margin="0,10,0,0">
+                <VerticalStackLayout>
+                    <!--Estos dos label se van a llenar desde C#-->
+                    <Label x:Name="lblValorIMC" FontSize="32" FontAttributes="Bold"
+                           HorizontalOptions="Center"/>
+
+                    <Label x:Name="lblDiagnostico" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
